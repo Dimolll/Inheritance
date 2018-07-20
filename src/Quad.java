@@ -16,19 +16,15 @@ public class Quad extends Shape {
 
     @Override
     public double getPerimeter() {
-        return getSide(a,b)+getSide(b,c)+getSide(c,d)+getSide(a,d);
+        return a.getSide(b)+b.getSide(c)+c.getSide(d)+d.getSide(a);
     }
 
     @Override
     public double getArea() {
         double p = getPerimeter() / 2;
-        return Math.sqrt((p - getSide(a, b)) * (p - getSide(b, c)) * (p - getSide(c, d)) * (p - getSide(a, d)));
+        return Math.sqrt((p - a.getSide(b)) * (p - b.getSide(c)) * (p - c.getSide(d)) * (p - d.getSide(d)));
     }
 
-
-    private double getSide(Point a, Point b){
-        return Math.sqrt(Math.pow((a.getX()-b.getX()),2)+ Math.pow((a.getY()-b.getY()),2));
-    }
 
     public void setA(Point a) {
         this.a = a;

@@ -9,6 +9,10 @@ public class Point {
 
     public Point(){}
 
+    public double getSide(Point point){
+        return Math.sqrt(Math.pow(point.getX()-x,2)+Math.pow(point.getY()-y,2));
+    }
+
     public double getX() {
         return x;
     }

@@ -11,16 +11,12 @@ public class Circle extends Shape{
 
     @Override
     public double getPerimeter() {
-        return 2*Math.PI*getRadius();
+        return 2*Math.PI*a.getSide(b);
     }
 
     @Override
     public double getArea() {
-        return (Math.PI*Math.pow(getRadius(),2));
-    }
-
-    private double getRadius(){
-        return Math.sqrt(Math.pow(a.getX()-b.getX(),2)+Math.pow(a.getY()-b.getY(),2));
+        return (Math.PI*Math.pow(a.getSide(b),2));
     }
 
     public Point getA() {

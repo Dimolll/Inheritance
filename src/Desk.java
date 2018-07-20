@@ -2,33 +2,40 @@ public class Desk {
     private Shape[] shapes;
     private int top;
 
-    public Desk(int size) {
-        shapes= new Shape[size];
+    public Desk() {
+        shapes= new Shape[4];
         top = 0;
     }
 
-    public Desk(){}
-
     public void addShape(Shape shape){
-        shapes[top++]=shape;
+        if(top<4)
+            shapes[top++]=shape;
+        else
+            System.out.println("Desk is full");
     }
 
     public Shape delShape(int count){
-        return shapes[top--];
+        if(top>0)
+            return shapes[top--];
+        else{
+            System.out.println("Desk is empty");
+            return null;
+        }
     }
 
-    public void showAll(){
+    public String showAll(){
         double allArea=0;
-        for(int i=0;i<shapes.length;i++) {
+        String outputInfo="";
+        for(int i=0;i<top; i++) {
             if(shapes[i]!=null) {
-                System.out.println(shapes[i].toString());
+                outputInfo = outputInfo + shapes[i].toString()+"\n";
                 allArea += shapes[i].getArea();
             } else {
-                System.out.println("Empty");
+                return "Empty";
             }
 
         }
-        System.out.println("Area of all shapes: " + allArea);
+        return outputInfo + "Area of all shapes: " + allArea;
     }
 
     public Shape[] getShapes() {

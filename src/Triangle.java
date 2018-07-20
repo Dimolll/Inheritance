@@ -14,17 +14,13 @@ public class Triangle extends Shape {
 
     @Override
     public double getPerimeter() {
-        return (getSide(a,b)+getSide(b,c)+getSide(c,a));
+        return (a.getSide(b)+b.getSide(c)+c.getSide(a));
     }
 
     @Override
     public double getArea() {
         double p = getPerimeter() / 2;
-        return Math.sqrt((p - getSide(a, b)) * (p - getSide(b, c)) * (p - getSide(c, a)));
-    }
-
-    private double getSide(Point a, Point b){
-        return Math.sqrt(Math.pow((a.getX()-b.getX()),2)+ Math.pow((a.getY()-b.getY()),2));
+        return Math.sqrt((p - a.getSide(b)) * (p - b.getSide(c)) * (p - c.getSide(a)));
     }
 
     public Point getA() {
